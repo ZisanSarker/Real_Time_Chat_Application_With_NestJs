@@ -8,7 +8,7 @@ export class ChatGateWay implements OnGatewayConnection, OnGatewayDisconnect {
     handleConnection(client: Socket) {
         console.log('New user connected..', client.id);
 
-        this.server.emit('user-joined', {
+        client.broadcast.emit('user-joined', {
             message: `New user joined the chat: ${client.id}`
         });
     }
